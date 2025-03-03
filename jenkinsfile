@@ -16,5 +16,18 @@ pipeline {
                 sh 'npm test test/integration/db.Connection.test.js'
             }
         }
+        post {
+            success {
+                mail to: 'denisatria4734@gmail.com',
+                subject: 'Build Sukses!',
+                body: 'Pipeline berjalan sukses.'
+            }
+            failure {
+                mail to: 'denisatria4734@gmail.com',
+                subject: 'Build Gagal!',
+                body: 'Pipeline mengalami kegagalan.'
+            }
+        }
+
     }
 }
